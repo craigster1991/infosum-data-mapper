@@ -1,11 +1,53 @@
-.columns {
+@use "../../styles/colours.scss" as *;
+
+.nav {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
-.column {
-  width: 50%;
+.columns {
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-around;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.col {
+  width: calc(50% - 50px);
   h2 {
     margin: 8px 0 8px 16px;
   }
+}
+
+.arrowCol {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  border: 1px solid $navy;
+  background-color: $white;
+  color: $navy;
+  border-radius: 1rem;
+  box-shadow: 0 5px 10px $border-gray;
+  background-image: linear-gradient(#ffffff80, #ffffff80), url(https://cdn.prod.website-files.com/607ef7a…/64b53b8…_halftone_right_navy.svg);
+  background-position: 0 0, 100% 100%;
+  background-repeat: repeat, no-repeat;
+  background-size: auto, auto 75%;
+  flex-direction: column;
+  // align-items: center;
+  display: flex;
+  padding: 16px;
+  margin: 16px auto;
+  max-width: 240px;
 }
