@@ -1,0 +1,59 @@
+{
+  "id_to_key": {},
+  "global_schema_keys": [
+    {
+      "key_id": 1,
+      "name": "Firstname",
+      "data_type": "NORMALIZER_TYPE_STRING",
+      "user_params": []
+    },
+    {
+      "key_id": 2,
+      "name": "Surname",
+      "data_type": "NORMALIZER_TYPE_STRING",
+      "user_params": []
+    },
+    {
+      "key_id": 3,
+      "name": "Mobile Advertising ID (e.g. AAID, IDFA)",
+      "data_type": "NORMALIZER_TYPE_STRING",
+      "user_params": []
+    },
+    {
+      "key_id": 4,
+      "name": "email",
+      "data_type": "NORMALIZER_TYPE_STRING",
+      "user_params": []
+    },
+    {
+      "key_id": 5,
+      "name": "Date of Birth",
+      "data_type": "NORMALIZER_TYPE_STRING",
+      "user_params": []
+    },
+    {
+      "key_id": 6,
+      "name": "Gender",
+      "data_type": "NORMALIZER_TYPE_STRING",
+      "user_params": []
+    },
+    {
+      "key_id": 7,
+      "name": "Marital Status",
+      "data_type": "NORMALIZER_TYPE_STRING",
+      "user_params": []
+    },
+    {
+      "key_id": 8,
+      "name": "Zip Code / Post Code",
+      "data_type": "NORMALIZER_TYPE_STRING",
+      "user_params": []
+    },
+    {
+      "key_id": 1,
+      "name": "Phone Number",
+      "data_type": "NORMALIZER_TYPE_STRING",
+      "user_params": []
+    }
+  ]
+}
