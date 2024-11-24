@@ -4,7 +4,7 @@ import DataContext from '../../contexts/dataContext'
 
 export const DataMapper = () => {
 
-  const { customerDataState: customerData, customerDataKeysState: customerDataKeys } = useContext(DataContext)
+  const { customerData: customerData, customerDataKeys: customerDataKeys } = useContext(DataContext)
   const [ page, setPage ] = useState(1)
 
   const handlePageChange = (page: number) => {
@@ -14,8 +14,8 @@ export const DataMapper = () => {
 
   return (
     <div className={styles.columns}>
-      <button onClick={() => handlePageChange(page + 1)}>next page</button>
       <button onClick={() => handlePageChange(page - 1)}>previous page</button>
+      <button onClick={() => handlePageChange(page + 1)}>next page</button>
       <div className={styles.column}>
         <h2>Your data</h2>
         {

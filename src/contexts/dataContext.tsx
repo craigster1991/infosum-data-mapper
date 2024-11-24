@@ -2,31 +2,31 @@ import { createContext, useState } from 'react'
 
 const DataContext = createContext<{
   // can be any[] due to customer data being dynamic
-  customerDataState: any[],
+  customerData: any[],
   setCustomerData: (data: any[]) => void
-  customerDataKeysState: any[],
+  customerDataKeys: any[],
   setCustomerDataKeys: (data: any[]) => void
 }>({
-  customerDataState: [],
+  customerData: [],
   setCustomerData: () => {},
-  customerDataKeysState: [],
+  customerDataKeys: [],
   setCustomerDataKeys: () => {}
 })
 
 const DataProvider = ({ children }: { children: React.ReactNode }) => {
 
-    const [customerDataState, setCustomerDataState] = useState<any[]>([])
+    const [customerData, setCustomerDataState] = useState<any[]>([])
     const setCustomerData = (data: any[]) => setCustomerDataState(data)
 
-    const [customerDataKeysState, setCustomerDataKeysState] = useState<any[]>([])
-    const setCustomerDataKeys = (data: any[]) => setCustomerDataKeysState(data)
+    const [customerDataKeys, setCustomerDataStateKeys] = useState<any[]>([])
+    const setCustomerDataKeys = (data: any[]) => setCustomerDataStateKeys(data)
 
 
     return (
         <DataContext.Provider value={{
-          customerDataState,
+          customerData,
           setCustomerData,
-          customerDataKeysState,
+          customerDataKeys,
           setCustomerDataKeys
         }}>
           {children}
