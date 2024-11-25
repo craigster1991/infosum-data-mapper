@@ -1,15 +1,27 @@
 import { useContext, useState } from 'react'
 import styles from './DataMapper.module.scss'
 import DataContext from '../../contexts/dataContext'
+import { CONSTANTS } from '../../utils/constants'
 
 export const DataMapper = () => {
 
-  const { customerData: customerData, customerDataKeys: customerDataKeys } = useContext(DataContext)
+  const { customerData: customerData, customerDataKeys: customerDataKeys, mappingData, setMappingData } = useContext(DataContext)
   const [page, setPage] = useState(1)
 
   const handlePageChange = (page: number) => {
     // can't go below 1 or above the number of pages
     setPage(page < 1 ? 1 : page > (customerData.length - 1) ? (customerData.length - 1) : page)
+  }
+
+  const handleMapChange = (e: any, inputKey: string) => {
+    setMappingData({
+      ...mappingData,
+      [inputKey]: {
+        from: inputKey,
+        to: e.target.value,
+        type: CONSTANTS.CONVERT_TYPES.MANUAL
+      }
+    })
   }
 
   return (
@@ -40,8 +52,23 @@ export const DataMapper = () => {
                 </div>
                 <div className={`${styles.col} ${styles.arrowCol}`}>{'➡️'}</div>
                 <div className={styles.col}>
+                  {/* render the data maps */}
                   {/* TODO // USE CARD COMPONENT */}
-                  merge
+                  {
+                    mappingData[key] && (
+                      <>
+                        <div>map to: {mappingData[key].to}</div>
+                        <select defaultValue={mappingData[key].to || "default"} onChange={(e) => handleMapChange(e, key)}>
+                          <option disabled value={"default"}>Please select...</option>
+                          {
+                            CONSTANTS.GLOBAL_SCHEMA_KEYS.map((mapKey) => (
+                              <option key={mapKey} value={mapKey}>{mapKey}</option>
+                            ))
+                          }
+                        </select>
+                      </>
+                    )
+                  }
                 </div>
               </div>
             ))

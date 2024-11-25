@@ -6,11 +6,21 @@ const DataContext = createContext<{
   setCustomerData: (data: any[]) => void
   customerDataKeys: any[],
   setCustomerDataKeys: (data: any[]) => void
+  mappingData: {
+    [key: string]: {
+      from: string,
+      to: string,
+      type: string
+    }
+  },
+  setMappingData: (data: {}) => void
 }>({
   customerData: [],
   setCustomerData: () => {},
   customerDataKeys: [],
-  setCustomerDataKeys: () => {}
+  setCustomerDataKeys: () => {},
+  mappingData: {},
+  setMappingData: () => {}
 })
 
 const DataProvider = ({ children }: { children: React.ReactNode }) => {
@@ -21,13 +31,20 @@ const DataProvider = ({ children }: { children: React.ReactNode }) => {
     const [customerDataKeys, setCustomerDataStateKeys] = useState<any[]>([])
     const setCustomerDataKeys = (data: any[]) => setCustomerDataStateKeys(data)
 
+    const [mappingData, setMappingDataState] = useState<{}>({
+      
+    })
+    const setMappingData = (data: {}) => setMappingDataState(data)
+
 
     return (
         <DataContext.Provider value={{
           customerData,
           setCustomerData,
           customerDataKeys,
-          setCustomerDataKeys
+          setCustomerDataKeys,
+          mappingData,
+          setMappingData
         }}>
           {children}
         </DataContext.Provider>
