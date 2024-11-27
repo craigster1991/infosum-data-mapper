@@ -1,8 +1,8 @@
-@use './colours.scss' as *;
-@import 'mixins';
+@use './colours.scss' as colours;
+@use 'mixins' as mixins;
 
 input, select, textarea {
-  @include input;
+  @include mixins.input;
 }
 
 select {
@@ -17,5 +17,5 @@ hr {
   width: 100%;
   height: 1px;
   border: none;
-  background-color: $navy-25;
+  background-color: colours.$navy-25;
 }

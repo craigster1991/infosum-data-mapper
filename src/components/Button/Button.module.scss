@@ -1,9 +1,9 @@
-@use "../../styles/colours.scss" as *;
+@use "../../styles/colours.scss" as colours;
 
 .button {
-  background-color: $orange;
+  background-color: colours.$orange;
   border: none;
-  color: $white;
+  color: colours.$white;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
@@ -20,7 +20,7 @@
 }
 
 .loading {
-  border: 4px solid $white;
+  border: 4px solid colours.$white;
   border-bottom-color: transparent;
   border-radius: 50%;
   width: 32px;

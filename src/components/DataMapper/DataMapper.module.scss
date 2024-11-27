@@ -1,10 +1,10 @@
-@use "../../styles/colours.scss" as *;
-@use "../../styles/breakpoints.scss" as *;
-@import "../../styles/mixins.scss";
+@use "../../styles/colours.scss" as colours;
+@use "../../styles/breakpoints.scss" as breakpoints;
+@use "../../styles/mixins.scss" as mixins;
 
 .wrapper {
   margin: 64px auto 0;
-  max-width: $tablet;
+  max-width: breakpoints.$tablet;
   width: 100%;
 }
 
@@ -33,7 +33,7 @@
     margin: 16px 0;
 
     span {
-      @include p;
+      @include mixins.p;
       margin: 0 16px;
     }
 
@@ -44,11 +44,11 @@
       border: none;
       cursor: pointer;
       font-size: 24px;
-      @include bold;
+      @include mixins.bold;
     }
   }
 
-  @media (min-width: $tablet) {
+  @media (min-width: breakpoints.$tablet) {
     flex-direction: row;
     justify-content: space-between;
 
@@ -76,8 +76,8 @@
   width: calc(50% - 50px);
 }
 .colHeading {
-  @include p;
-  @include bold;
+  @include mixins.p;
+  @include mixins.bold;
 }
 
 .arrowCol {
@@ -88,8 +88,8 @@
   align-items: center;
 
   span {
-    @include bold;
-    @include textGradSpin;
+    @include mixins.bold;
+    @include mixins.textGradSpin;
     font-size: 32px;
   }
 }

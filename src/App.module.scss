@@ -1,6 +1,6 @@
-@use 'styles/colours' as *;
-@use 'styles/breakpoints' as *;
-@import 'styles/mixins';
+@use 'styles/colours' as colours;
+@use 'styles/breakpoints' as breakpoints;
+@use 'styles/mixins' as mixins;
 
 .wrapper {
   width: 100vw;
@@ -8,7 +8,7 @@
   padding: 0 24px;
   margin: 128px auto;
 
-  @media (min-width: $tablet) {
+  @media (min-width: breakpoints.$tablet) {
     padding: 0 40px;
   }
 }
@@ -19,16 +19,16 @@
   align-items: flex-start;
 
   .title {
-    @include h1;
+    @include mixins.h1;
     margin-bottom: 32px;
 
     span {
-      @include textGradSpin;
+      @include mixins.textGradSpin;
     }
   }
   
   .subtitle {
-    @include h2;
+    @include mixins.h2;
     margin-bottom: 24px;
   }
 
@@ -42,7 +42,7 @@
     align-items: flex-start;
 
     .instructions {
-      @include p;
+      @include mixins.p;
       margin-bottom: 16px;
     }
   }

@@ -1,6 +1,5 @@
-@use './colours.scss' as *;
-@import 'typography.scss';
-@import 'breakpoints.scss';
+@use './colours.scss' as colours;
+@use 'breakpoints.scss' as breakpoints;
 
 @mixin bold {
   font-family: Helvetica, Arial, sans-serif;
@@ -21,7 +20,7 @@
   @include bold;
   font-size: 40px;
   line-height: 1;
-  @media (min-width: $tablet) {
+  @media (min-width: breakpoints.$tablet) {
     font-size: 64px;
   }
 }
@@ -30,7 +29,7 @@
   @include bold;
   font-size: 24px;
   line-height: 1;
-  @media (min-width: $tablet) {
+  @media (min-width: breakpoints.$tablet) {
     font-size: 32px;
   }
 }
@@ -43,12 +42,12 @@
 @mixin input {
   @include regular;
   font-size: 18px;
-  background-color: $grey;
+  background-color: colours.$grey;
   border: none;
   outline: none;
   height: 48px;
   padding: 8px 16px;
-  color: $navy;
+  color: colours.$navy;
 }
 
 @mixin textGradSpin {

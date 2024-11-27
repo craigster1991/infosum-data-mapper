@@ -1,29 +1,29 @@
-@use "../../styles/colours.scss" as *;
-@import "../../styles/mixins.scss";
+@use "../../styles/colours.scss" as colours;
+@use "../../styles/mixins.scss" as mixins;
 
 .card {
-  border: 1px solid $navy;
-  background-color: $white;
-  color: $navy;
+  border: 1px solid colours.$navy;
+  background-color: colours.$white;
+  color: colours.$navy;
   border-radius: 1rem;
-  box-shadow: 0 5px 10px $border-gray;
+  box-shadow: 0 5px 10px colours.$border-gray;
   flex-direction: column;
   display: flex;
   padding: 32px 16px;
   margin: 16px 0;
 
   &.cardDark {
-    background-color: $navy;
-    color: $white;
-    border-color: $white;
+    background-color: colours.$navy;
+    color: colours.$white;
+    border-color: colours.$white;
   }
 
   .title, .content {
-    @include p;
+    @include mixins.p;
   }
 
   .title {
-    @include bold;
+    @include mixins.bold;
   }
 
   .content {
