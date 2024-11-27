@@ -31,9 +31,9 @@ export const DataMapper = () => {
       {/* TODO // CREATE NAV COMPONENT */}
       <div className={styles.nav}>
         <div className={styles.pagination}>
-          <button onClick={() => handlePageChange(page - 1)}>←</button>
+          <button onClick={() => handlePageChange(page - 1)}>⬅</button>
           <span>Page {page} of {customerData.length - 1}</span>
-          <button onClick={() => handlePageChange(page + 1)}>→</button>
+          <button onClick={() => handlePageChange(page + 1)}>⮕</button>
         </div>
         <select className={styles.filters} onClick={() => alert("This is not implemented yet!")}>
           <option value="default">Filter by...</option>

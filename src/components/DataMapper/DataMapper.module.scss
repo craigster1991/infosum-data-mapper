@@ -30,7 +30,10 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 16px 0;
+    height: 48px;
+    padding: 8px 16px;
+    background-color: colours.$grey;
+    border: 1px solid colours.$navy-50;
 
     span {
       @include mixins.p;
@@ -95,6 +98,8 @@
   .autoButton {
     display: inline-block;
     margin-left: 16px;
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 }
 
