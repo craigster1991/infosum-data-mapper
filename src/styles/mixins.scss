@@ -1,0 +1,76 @@
+@use './colours.scss' as *;
+@import 'typography.scss';
+@import 'breakpoints.scss';
+
+@mixin bold {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+@mixin regular {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+
+@mixin light {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+}
+
+@mixin h1 {
+  @include bold;
+  font-size: 40px;
+  line-height: 1;
+  @media (min-width: $tablet) {
+    font-size: 64px;
+  }
+}
+
+@mixin h2 {
+  @include bold;
+  font-size: 24px;
+  line-height: 1;
+  @media (min-width: $tablet) {
+    font-size: 32px;
+  }
+}
+
+@mixin p {
+  @include regular;
+  font-size: 18px;
+}
+
+@mixin input {
+  @include regular;
+  font-size: 18px;
+  background-color: $grey;
+  border: none;
+  outline: none;
+  height: 48px;
+  padding: 8px 16px;
+  color: $navy;
+}
+
+@mixin textGradSpin {
+  background: linear-gradient(248deg, #f68d2e, #13294b, #6cace4);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGradSpinKeyframes 4s ease infinite;
+}
+
+
+
+@keyframes textGradSpinKeyframes {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
