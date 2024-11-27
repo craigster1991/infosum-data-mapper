@@ -1,0 +1,34 @@
+@use "../../styles/colours.scss" as *;
+@import "../../styles/mixins.scss";
+
+.card {
+  border: 1px solid $navy;
+  background-color: $white;
+  color: $navy;
+  border-radius: 1rem;
+  box-shadow: 0 5px 10px $border-gray;
+  flex-direction: column;
+  display: flex;
+  padding: 32px 16px;
+  margin: 16px 0;
+
+  &.cardDark {
+    background-color: $navy;
+    color: $white;
+    border-color: $white;
+  }
+
+  .title, .content {
+    @include p;
+  }
+
+  .title {
+    @include bold;
+  }
+
+  .content {
+    &.isEmpty {
+      opacity: 0.25;
+    }
+  }
+}
