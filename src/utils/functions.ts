@@ -9,7 +9,7 @@ export const fetchCSV = (): any[] => {
     header: true,
     dynamicTyping: true
   });
-  return parsed.data.map((item, index) => {
+  return parsed.data.map((item) => {
     return {
       // id: index,
       ...item
