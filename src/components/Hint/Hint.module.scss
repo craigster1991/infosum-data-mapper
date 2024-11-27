@@ -1,0 +1,15 @@
+@use "../../styles/colours.scss" as *;
+@import "../../styles/mixins.scss";
+
+.hint {
+  padding: 8px;
+  background-color: $white;
+  border: 2px solid $green;
+  color: $green;
+  text-shadow: 2px 2px 2px $navy;
+  @include p;
+  &.auto {
+    border-color: $yellow;
+    color: $yellow;
+  }
+}
