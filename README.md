@@ -47,4 +47,6 @@ This is a simple fuzzy search using string and partial string detection on the p
 * Filters for customised views on the data
 * Resetting the mappings or applying the original automatic map on one or more properties
 * A true summary screen with the customer data being put into the new Schema, available for the customer to browse the new dataset to be 100% on the decisions
+* Be able to jump to missing/incomplete mappings without having to scroll around
+* Highligh incomplete mappings before trying to proceed
 * A better design done by a real designer!
