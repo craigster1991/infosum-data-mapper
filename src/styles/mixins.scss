@@ -39,6 +39,11 @@
   font-size: 18px;
 }
 
+@mixin pSmall {
+  @include regular;
+  font-size: 14px;
+}
+
 @mixin input {
   @include regular;
   font-size: 18px;

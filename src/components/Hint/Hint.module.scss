@@ -2,14 +2,16 @@
 @use "../../styles/mixins.scss" as mixins;
 
 .hint {
-  padding: 8px;
-  background-color: colours.$white;
-  border: 2px solid colours.$green;
+  width: auto;
+  text-align: right;
+  // text-decoration: underline;
+  @include mixins.pSmall;
+}
+
+.manual {
+  color: colours.$yellow;
+}
+
+.auto {
   color: colours.$green;
-  text-shadow: 2px 2px 2px colours.$navy;
-  @include mixins.p;
-  &.auto {
-    border-color: colours.$yellow;
-    color: colours.$yellow;
-  }
 }

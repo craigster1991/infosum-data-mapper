@@ -9,14 +9,10 @@
   box-shadow: 0 5px 10px colours.$border-gray;
   flex-direction: column;
   display: flex;
+  justify-content: center;
   padding: 32px 16px;
   margin: 16px 0;
-
-  &.cardDark {
-    background-color: colours.$navy;
-    color: colours.$white;
-    border-color: colours.$white;
-  }
+  min-height: 180px;
 
   .title, .content {
     @include mixins.p;
@@ -26,9 +22,36 @@
     @include mixins.bold;
   }
 
-  .content {
-    &.isEmpty {
-      opacity: 0.25;
+  .choice, .title {
+    margin-bottom: 16px;
+  }
+
+  .choice {
+    background-color: transparent;
+    border: 1px solid colours.$orange;
+    color: colours.$orange;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: colours.$navy;
+    }
+  }
+
+  .isEmpty {
+    opacity: 0.25;
+  }
+
+
+  &.cardDark {
+    background-color: colours.$navy;
+    color: colours.$white;
+    border-color: colours.$white;
+
+    .choice {
+      &:hover {
+        background-color: colours.$white;
+      }
     }
   }
 }

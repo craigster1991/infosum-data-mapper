@@ -12,6 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 999999;
 
   @media (min-width: breakpoints.$tablet) {
     padding: 0 40px;

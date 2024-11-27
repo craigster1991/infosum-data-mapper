@@ -3,11 +3,13 @@ import styles from './DataMapper.module.scss'
 import DataContext from '../../contexts/dataContext'
 import { CONSTANTS } from '../../utils/constants'
 import { Card } from '../Card/Card'
+import { Button } from '../Button/Button'
 
 export const DataMapper = () => {
 
   const { customerData: customerData, customerDataKeys: customerDataKeys } = useContext(DataContext)
   const [page, setPage] = useState(1)
+  const [hasSeach, setHasSearch] = useState(false)
   const [searchValues, setSearchValues] = useState<string[]>([])
 
   const handlePageChange = (page: number) => {
@@ -17,6 +19,7 @@ export const DataMapper = () => {
 
   const search = (e: any) => {
     const searchValue = e.target.value.toLowerCase()
+    setHasSearch(!!searchValue)
     const searchResults = (customerDataKeys.filter((key) => {
       return key?.toLowerCase()?.includes(searchValue) || (String(customerData[page][key]))?.toLowerCase()?.includes(searchValue)
     }))
@@ -42,17 +45,21 @@ export const DataMapper = () => {
         <div className={styles.row}>
           <p className={`${styles.col} ${styles.colHeading}`}>Your Data</p>
           <div className={`${styles.col} ${styles.arrowCol}`}></div>
-          <p className={`${styles.col} ${styles.colHeading}`}>Mapped Fields</p>
+          <p className={`${styles.col} ${styles.colHeading}`}>
+            Mapped Fields
+            <Button isSmall text='Reset to auto' className={styles.autoButton} onClick={() => alert('Sorry this isn\'t implemented yet!')} />
+          </p>
         </div>
         {
           // if we have data and keys, map and render
           customerData[page] && customerDataKeys && customerDataKeys
             .filter((key: string) => {
               // search filter
-              if (searchValues.length) {
+              if (!hasSeach) return true
+              // if (searchValues.length) {
                 return searchValues.includes(key)
-              }
-              return true
+              // }
+              // return true
             })
             .map((key: string, index: number) => {
               const isDarkTheme = !!(index % 2)

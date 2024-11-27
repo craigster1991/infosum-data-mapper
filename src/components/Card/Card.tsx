@@ -3,6 +3,7 @@ import { CONSTANTS } from '../../utils/constants'
 import { handleMapChangeType } from '../../utils/types'
 import styles from './Card.module.scss'
 import DataContext from '../../contexts/dataContext'
+import { Hint } from '../Hint/Hint'
 
 type mapCardProps = {
   cardType: 'map',
@@ -35,8 +36,8 @@ export const Card = (props: CardProps) => {
 
   const { isDarkTheme, cardType, keyName } = props;
 
+  // type guard for content because of using union types
   let content = '';
-  // type guard for content
   if ('content' in props) content = props.content;
 
   return (
@@ -54,8 +55,13 @@ export const Card = (props: CardProps) => {
       {
         cardType === CONSTANTS.CARD_TYPES.MAP && mappingData[keyName] && (
           <>
-            <div>map to: {mappingData[keyName].to}</div>
-            <select defaultValue={mappingData[keyName].to || "default"} onChange={(e) => handleMapChange(e, keyName)}>
+            <div className={styles.title}>
+              <span>Currently set to: </span>
+              <span className={`${!mappingData[keyName].to && styles.isEmpty}`}>
+                {mappingData[keyName].to || "no match found"}
+              </span>
+            </div>
+            <select className={styles.choice} defaultValue={mappingData[keyName].to || "default"} onChange={(e) => handleMapChange(e, keyName)}>
               <option disabled value={"default"}>Please select...</option>
               {
                 CONSTANTS.GLOBAL_SCHEMA_KEYS.map((mapKey) => (
@@ -63,6 +69,7 @@ export const Card = (props: CardProps) => {
                 ))
               }
             </select>
+            { mappingData[keyName].to && <Hint type={mappingData[keyName].type} /> }
           </>
         )
       }

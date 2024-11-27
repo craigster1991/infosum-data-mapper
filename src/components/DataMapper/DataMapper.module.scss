@@ -78,6 +78,11 @@
 .colHeading {
   @include mixins.p;
   @include mixins.bold;
+
+  .autoButton {
+    display: inline-block;
+    margin-left: 16px;
+  }
 }
 
 .arrowCol {
