@@ -16,7 +16,6 @@ type customerDataCardProps = {
 type CardProps = {
   isDarkTheme?: boolean,
   keyName: string,
-  cardType: 'map' | 'customerData',
 } & (mapCardProps | customerDataCardProps)
 
 export const Card = (props: CardProps) => {
