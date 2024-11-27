@@ -1,0 +1,23 @@
+@use "../../styles/colours.scss" as *;
+@use "../../styles/breakpoints.scss" as *;
+
+.nav {
+  background-color: $navy;
+  padding: 0 24px;
+  width: 100%;
+  height: 64px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (min-width: $tablet) {
+    padding: 0 40px;
+  }
+}
+
+.logo {
+  width: 192px;
+}
