@@ -74,7 +74,7 @@ export const DataMapper = () => {
                     />
                   </div>
                   <div className={`${styles.col} ${styles.arrowCol}`}>
-                    <span>⮕</span>
+                    <span>⬇</span>
                   </div>
                   <div className={styles.col}>
                     {
