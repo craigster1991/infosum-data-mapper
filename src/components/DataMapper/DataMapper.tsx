@@ -39,14 +39,14 @@ export const DataMapper = () => {
       </div>
 
       <div className={styles.columns}>
-          <div className={styles.row}>
-            <p className={`${styles.col} ${styles.colHeading}`}>Your Data</p>
-            <div className={`${styles.col} ${styles.arrowCol}`}></div>
-            <p className={`${styles.col} ${styles.colHeading}`}>Mapped Fields</p>
-          </div>
-          {
-            // if we have data and keys, map and render
-            customerData[page] && customerDataKeys && customerDataKeys
+        <div className={styles.row}>
+          <p className={`${styles.col} ${styles.colHeading}`}>Your Data</p>
+          <div className={`${styles.col} ${styles.arrowCol}`}></div>
+          <p className={`${styles.col} ${styles.colHeading}`}>Mapped Fields</p>
+        </div>
+        {
+          // if we have data and keys, map and render
+          customerData[page] && customerDataKeys && customerDataKeys
             .filter((key: string) => {
               // search filter
               if (searchValues.length) {
@@ -54,33 +54,34 @@ export const DataMapper = () => {
               }
               return true
             })
-            .map((key: string, index: number) => (
-              <div className={styles.row} key={key}>
-                <div className={styles.col}>
-                  <Card
-                    keyName={key}
-                    cardType={CONSTANTS.CARD_TYPES.CUSTOMER_DATA}
-                    content={customerData[page][key]}
-                    isDarkTheme={!!(index % 2)}
-                  />
-                </div>
-                <div className={`${styles.col} ${styles.arrowCol}`}>
-                  <span>⮕</span>
-                </div>
-                <div className={styles.col}>
-                  {
-                    mappingData[key] && (
+            .map((key: string, index: number) => {
+              const isDarkTheme = !!(index % 2)
+              return (
+                <div className={styles.row} key={key}>
+                  <div className={styles.col}>
+                    <Card
+                      keyName={key}
+                      cardType={CONSTANTS.CARD_TYPES.CUSTOMER_DATA}
+                      content={customerData[page][key]}
+                      isDarkTheme={isDarkTheme}
+                    />
+                  </div>
+                  <div className={`${styles.col} ${styles.arrowCol}`}>
+                    <span>⮕</span>
+                  </div>
+                  <div className={styles.col}>
+                    {
                       <Card
                         cardType={CONSTANTS.CARD_TYPES.MAP}
                         keyName={key}
-                        isDarkTheme={!!(index % 2)}
+                        isDarkTheme={isDarkTheme}
                       />
-                    )
-                  }
+                    }
+                  </div>
                 </div>
-              </div>
-            ))
-          }
+              )
+            })
+        }
       </div>
 
     </div>

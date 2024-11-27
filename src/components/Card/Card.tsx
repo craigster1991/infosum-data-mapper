@@ -53,7 +53,7 @@ export const Card = (props: CardProps) => {
         )
       }
       {
-        cardType === CONSTANTS.CARD_TYPES.MAP && (
+        cardType === CONSTANTS.CARD_TYPES.MAP && mappingData[keyName] && (
           <>
             <div>map to: {mappingData[keyName].to}</div>
             <select defaultValue={mappingData[keyName].to || "default"} onChange={(e) => handleMapChange(e, keyName)}>
