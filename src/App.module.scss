@@ -1,6 +1,49 @@
+@use 'styles/colours' as *;
+@use 'styles/breakpoints' as *;
+@import 'styles/mixins';
+
 .wrapper {
   width: 100vw;
   max-width: 1280px;
-  padding: 0 32px;
-  margin: 0 auto;
+  padding: 0 24px;
+  margin: 128px auto;
+
+  @media (min-width: $tablet) {
+    padding: 0 40px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .title {
+    @include h1;
+    margin-bottom: 32px;
+
+    span {
+      @include textGradSpin;
+    }
+  }
+  
+  .subtitle {
+    @include h2;
+    margin-bottom: 24px;
+  }
+
+  .uploadButton {
+    margin-top: 16px;
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .instructions {
+      @include p;
+      margin-bottom: 16px;
+    }
+  }
 }

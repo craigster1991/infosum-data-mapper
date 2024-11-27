@@ -2,11 +2,13 @@ import { useContext, useState } from 'react'
 import styles from './DataMapper.module.scss'
 import DataContext from '../../contexts/dataContext'
 import { CONSTANTS } from '../../utils/constants'
+import { Card } from '../Card/Card'
 
 export const DataMapper = () => {
 
   const { customerData: customerData, customerDataKeys: customerDataKeys, mappingData, setMappingData } = useContext(DataContext)
   const [page, setPage] = useState(1)
+  const [searchValues, setSearchValues] = useState<string[]>([])
 
   const handlePageChange = (page: number) => {
     // can't go below 1 or above the number of pages
@@ -24,35 +26,54 @@ export const DataMapper = () => {
     })
   }
 
+  const search = (e: any) => {
+    const searchValue = e.target.value.toLowerCase()
+    const searchResults = (customerDataKeys.filter((key) => {
+      return key?.toLowerCase()?.includes(searchValue) || (String(customerData[page][key]))?.toLowerCase()?.includes(searchValue)
+    }))
+    setSearchValues(searchResults)
+  }
+
   return (
-    <>
+    <div className={styles.wrapper}>
       {/* TODO // CREATE NAV COMPONENT */}
       <div className={styles.nav}>
-        <input type="text" placeholder="search" />
-        <button onClick={() => handlePageChange(page - 1)}>previous page</button>
-        <button onClick={() => handlePageChange(page + 1)}>next page</button>
+        <div className={styles.pagination}>
+          <button onClick={() => handlePageChange(page - 1)}>←</button>
+          <span>Page {page} of {customerData.length - 1}</span>
+          <button onClick={() => handlePageChange(page + 1)}>→</button>
+        </div>
+        <select className={styles.filters} onClick={() => alert("This is not implemented yet!")}>
+          <option value="default">Filter by...</option>
+        </select>
+        <input className={styles.search} type="text" placeholder="Search..." onChange={search} />
       </div>
 
       <div className={styles.columns}>
           <div className={styles.row}>
-            <h2 className={styles.col}>Your Data</h2>
+            <p className={`${styles.col} ${styles.colHeading}`}>Your Data</p>
             <div className={`${styles.col} ${styles.arrowCol}`}></div>
-            <h2 className={styles.col}>Mapped Fields</h2>
+            <p className={`${styles.col} ${styles.colHeading}`}>Mapped Fields</p>
           </div>
           {
             // if we have data and keys, map and render
-            customerData[page] && customerDataKeys && customerDataKeys.map((key: string) => (
+            customerData[page] && customerDataKeys && customerDataKeys
+            .filter((key: string) => {
+              // search filter
+              if (searchValues.length) {
+                return searchValues.includes(key)
+              }
+              return true
+            })
+            .map((key: string, index: number) => (
               <div className={styles.row} key={key}>
                 <div className={styles.col}>
-                  {/* TODO // CREATE CARD COMPONENT */}
-                  <div className={styles.card} key={key}>
-                    <span>{key}</span>
-                    <span>{customerData[page][key] || "\u00A0"}</span>
-                  </div>
+                  <Card keyName={key} content={customerData[page][key]} isDarkTheme={!!(index % 2)} />
                 </div>
-                <div className={`${styles.col} ${styles.arrowCol}`}>{'➡️'}</div>
+                <div className={`${styles.col} ${styles.arrowCol}`}>
+                  <span>⮕</span>
+                </div>
                 <div className={styles.col}>
-                  {/* render the data maps */}
                   {/* TODO // USE CARD COMPONENT */}
                   {
                     mappingData[key] && (
@@ -75,6 +96,6 @@ export const DataMapper = () => {
           }
       </div>
 
-    </>
+    </div>
   )
 }

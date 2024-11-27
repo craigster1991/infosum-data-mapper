@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import styles from './App.module.scss'
-import { Heading } from './components/Heading/Heading'
+import { Nav } from './components/Nav/Nav'
 import { Button } from './components/Button/Button';
 import { DataMapper } from './components/DataMapper/DataMapper';
 import DataContext from './contexts/dataContext';
@@ -34,9 +34,28 @@ function App() {
 
   return (
     <div className={styles.wrapper}>
-      <Heading />
-      { step === 1 && <Button text="Upload CSV" onClick={UploadCSV} isLoading={isLoading} /> }
-      { step === 2 && <DataMapper /> }
+      <Nav />
+      <div className={styles.content}>
+        {step === 1 && (
+          <div className={styles.step}>
+            <h1 className={styles.title}>Welcome to <span>SecureAlign.</span></h1>
+            <h2 className={styles.subtitle}>Align your data with us and we'll guide you every step of the way.</h2>
+            <p className={styles.instructions}>
+              Upload a CSV file to get started. We will automatically map your data to our schema where possible. You can then choose your own mappings for any fields that need amends or did not find an automatic match for.
+            </p>
+            <Button className={styles.uploadButton} text="Upload CSV" onClick={UploadCSV} isLoading={isLoading} />
+          </div>
+        )}
+        {step === 2 && (
+          <div className={styles.step}>
+            <h2 className={styles.subtitle}>Let's get started.</h2>
+            <p className={styles.instructions}>Below you can see your data on the left, with each property in a separate card. You can cycle your content pages to ensure the data has successfully pulled through.</p>
+            <p className={styles.instructions}>On the right you can see the what the auto map result is. Please amend as required by selecting any of the cards on the right hand side.</p>
+            <hr />
+            <DataMapper />
+          </div>
+        )}
+      </div>
     </div>
   )
 }
