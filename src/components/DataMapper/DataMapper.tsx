@@ -6,7 +6,7 @@ import { Card } from '../Card/Card'
 
 export const DataMapper = () => {
 
-  const { customerData: customerData, customerDataKeys: customerDataKeys, mappingData } = useContext(DataContext)
+  const { customerData: customerData, customerDataKeys: customerDataKeys } = useContext(DataContext)
   const [page, setPage] = useState(1)
   const [searchValues, setSearchValues] = useState<string[]>([])
 
