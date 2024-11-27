@@ -34,8 +34,10 @@
     border-radius: 10px;
     width: 100%;
     cursor: pointer;
+    transition: border-color 0.25s, color 0.25s;
     &:hover {
-      background-color: colours.$navy;
+      border-color: colours.$navy;
+      color: colours.$navy;
     }
   }
 
@@ -51,7 +53,8 @@
 
     .choice {
       &:hover {
-        background-color: colours.$white;
+        border-color: colours.$white;
+        color: colours.$white;
       }
     }
   }
