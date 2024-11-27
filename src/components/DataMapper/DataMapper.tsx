@@ -6,24 +6,13 @@ import { Card } from '../Card/Card'
 
 export const DataMapper = () => {
 
-  const { customerData: customerData, customerDataKeys: customerDataKeys, mappingData, setMappingData } = useContext(DataContext)
+  const { customerData: customerData, customerDataKeys: customerDataKeys, mappingData } = useContext(DataContext)
   const [page, setPage] = useState(1)
   const [searchValues, setSearchValues] = useState<string[]>([])
 
   const handlePageChange = (page: number) => {
     // can't go below 1 or above the number of pages
     setPage(page < 1 ? 1 : page > (customerData.length - 1) ? (customerData.length - 1) : page)
-  }
-
-  const handleMapChange = (e: any, inputKey: string) => {
-    setMappingData({
-      ...mappingData,
-      [inputKey]: {
-        from: inputKey,
-        to: e.target.value,
-        type: CONSTANTS.CONVERT_TYPES.MANUAL
-      }
-    })
   }
 
   const search = (e: any) => {
@@ -68,26 +57,24 @@ export const DataMapper = () => {
             .map((key: string, index: number) => (
               <div className={styles.row} key={key}>
                 <div className={styles.col}>
-                  <Card keyName={key} content={customerData[page][key]} isDarkTheme={!!(index % 2)} />
+                  <Card
+                    keyName={key}
+                    cardType={CONSTANTS.CARD_TYPES.CUSTOMER_DATA}
+                    content={customerData[page][key]}
+                    isDarkTheme={!!(index % 2)}
+                  />
                 </div>
                 <div className={`${styles.col} ${styles.arrowCol}`}>
                   <span>⮕</span>
                 </div>
                 <div className={styles.col}>
-                  {/* TODO // USE CARD COMPONENT */}
                   {
                     mappingData[key] && (
-                      <>
-                        <div>map to: {mappingData[key].to}</div>
-                        <select defaultValue={mappingData[key].to || "default"} onChange={(e) => handleMapChange(e, key)}>
-                          <option disabled value={"default"}>Please select...</option>
-                          {
-                            CONSTANTS.GLOBAL_SCHEMA_KEYS.map((mapKey) => (
-                              <option key={mapKey} value={mapKey}>{mapKey}</option>
-                            ))
-                          }
-                        </select>
-                      </>
+                      <Card
+                        cardType={CONSTANTS.CARD_TYPES.MAP}
+                        keyName={key}
+                        isDarkTheme={!!(index % 2)}
+                      />
                     )
                   }
                 </div>

@@ -1,7 +1,7 @@
 import { CONSTANTS } from '../../utils/constants'
 import styles from './Hint.module.scss'
 
-interface HintProps {
+type HintProps = {
   type: "auto" | "manual",
   className?: string
 }

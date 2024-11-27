@@ -1,20 +1,17 @@
 import { createContext, useState } from 'react'
+import { mappingDataType } from '../utils/types'
 
-const DataContext = createContext<{
+type dataContextType = {
   // can be any[] due to customer data being dynamic
   customerData: any[],
   setCustomerData: (data: any[]) => void
   customerDataKeys: any[],
   setCustomerDataKeys: (data: any[]) => void
-  mappingData: {
-    [key: string]: {
-      from: string,
-      to: string,
-      type: string
-    }
-  },
+  mappingData: mappingDataType,
   setMappingData: (data: {}) => void
-}>({
+}
+
+const DataContext = createContext<dataContextType>({
   customerData: [],
   setCustomerData: () => {},
   customerDataKeys: [],

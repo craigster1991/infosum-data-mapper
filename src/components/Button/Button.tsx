@@ -1,6 +1,6 @@
 import styles from './Button.module.scss'
 
-interface ButtonProps {
+type ButtonProps = {
   text: string
   onClick: () => void,
   isLoading?: boolean,
